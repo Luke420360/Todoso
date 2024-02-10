@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { useTodos } from "../contexts/TodoContext"
+import "./tableStyle.css"
 
 const TodoTable = () => {
   const {todos, setTodos} = useTodos();
@@ -17,6 +18,18 @@ const TodoTable = () => {
     }
   }
 
+  const handleActionClick = (todoId: string) => {
+    const foundTodo = todos.findIndex(todo => todo.id === todoId);
+    
+    if (foundTodo !== -1) {
+      const newTodoList = [...todos].filter(item => item !== todos[foundTodo]);
+      console.log('Objekt gefunden und gelöscht');
+      setTodos(newTodoList);
+    } else {
+      console.log('Objekt nicht gefunden.');
+    }
+  }
+
   const TableCols = useCallback(() => {
     return (
       <thead>
@@ -24,6 +37,7 @@ const TodoTable = () => {
         <th>Description</th>
         <th>Due</th>
         <th>Done</th>
+        <th>Action</th>
       </thead>
     )
   }, [])
@@ -37,6 +51,7 @@ const TodoTable = () => {
             <td>{todo.description}</td>
             <td>{todo.due}</td>
             <td id='tdChecked' onClick={() => handleCheckClick(todo.id)}>{todo.checked ? "Done" : "Open"}</td>
+            <td id='tdAction' onClick={() => handleActionClick(todo.id)}>Delete</td>
           </tr>
         ))}
       </tbody>
@@ -46,7 +61,7 @@ const TodoTable = () => {
   return (
     <>
       <h2>Table of Todos</h2>
-      <table>
+      <table className="table">
         <TableCols />
         <TableRows />
       </table>

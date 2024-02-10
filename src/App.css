@@ -9,15 +9,6 @@
   justify-content: space-around;
 }
 
-#tdChecked {
-  cursor: pointer;
-
-}
-
-#tdChecked:hover {
-  color: #8d8ddd;
-}
-
 #addTodoForm {
   width: 31%;
 }
@@ -47,24 +38,10 @@ input {
   padding: 4px;
 }
 
-thead {
-  border: 1px solid;
-}
-
-th {
-  border: 1px solid;
-}
-
-td {
-  padding: 4px;
-  margin-left: 4px;
-  margin-right: 4px;
-  text-align: center;
-}
-
 .card {
   border-radius: 20px;
   background-color: #131320;
+  width: 100%;
   padding: 8px;
   margin: 4px
 }
